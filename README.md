@@ -1,1 +1,1 @@
-Learning JavaScript
+JavaScript journey with Because She Can
