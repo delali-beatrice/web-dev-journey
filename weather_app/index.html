@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <main class="app">
+
+        <header class="app-header">
+            <h1 class="logo">Skyline</h1>
+            <p class="tagline">Know the weather before you step out</p>
+        </header>
+
+        <form action="" id="search-form" class="search-bar">
+
+            <input 
+                type="text" 
+                id="city-input" 
+                placeholder="Enter a city, e.g. Accra"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" class="search-btn" aria-label="Search">
+                Search
+            </button>
+        </form>
+
+        <!--Loading State-->
+        <div id="loading" class="state-message hidden">
+            <p>Fetching the weather condition over your city...</p>
+        </div>
+
+        <!--Error state-->
+        <div id="error" class="state-message error hidden">
+            <p id="error-text">
+                City not found. Check the spelling and try again.
+            </p>
+        </div>
+
+        <!--weather card(populated by JavaScript)-->
+        <section id="weather-card" class="weather-card hidden">
+            <div class="card-top">
+                <div>
+                    <h2 id="city-name">City name</h2>
+                    <p id="date-today" class="date">Day, Date</p>
+                </div>
+    
+                <div class="unit-toogle">
+                    <button type="button" id="unit-c" class="unit-btn active">
+                        °C
+                    </button>
+    
+                    <button type="button" id="unit-f" class="unit-btn">
+                        °F
+                    </button>
+                </div>
+            </div>
+    
+            <div class="card-main">
+                <img src="" alt="" id="weather-icon" class="weather-icon">
+                <span id="temperature" class="temperature">--°</span>
+            </div>
+    
+            <p id="condition" class="condition">--</p>
+    
+            <div class="card-details">
+                <div class="detail">
+                    <span class="detail-label">
+                        Humidity
+                    </span>
+                    <spaan id="humidity" class="detail-value">
+                        --%
+                    </spaan>
+                </div>
+    
+                <div class="detail">
+                    <span class="detail-label">
+                        Wind
+                    </span>
+                    <span id="wind" class="detail-value">
+                        -- km/h
+                    </span>
+                </div>
+    
+                <div class="detail">
+                    <span class="detail-label">
+                        Feels like
+                    </span>
+                    <span id="feels-like" class="detail-value">
+                        --°
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
