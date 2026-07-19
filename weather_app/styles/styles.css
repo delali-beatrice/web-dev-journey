@@ -1,0 +1,230 @@
+/* Design tokens */
+:root {
+    --sky-top: #4f7cac;
+    --sky-bottom: #86a8cc;
+    --card-bg: rgba(255, 255,255, 0.92);
+    --text-dark: #1e2a38;
+    --text-muted: #5b6b7c;
+    --accent: #e8a33d;
+    --error: #c0392b;
+    --radius: 20px;
+    --shadow: 0 20px 40px rgba(20, 30, 48, 0.25);
+    --font-display: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    background: linear-gradient(160deg, var(--sky-top) 0%, var(--sky-bottom) 60%, #cfe0ee 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+/* Layout */
+.app{
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.app-header{
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* Search bar */
+.search-bar{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+#city-input{
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    background: rgba(255, 255,255, 0.9);
+    color: var(--text-dark);
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+#city-input:focus{
+    box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.5);
+}
+
+.search-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.search-btn:hover {
+    background: #d6912e;
+    transform: translateY(-1px);
+}
+
+.search-btn:active{
+    transform: translateY(0);
+}
+
+/* state messages (loading/error) */
+.state-message {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius);
+    padding: 24px;
+    font-size: 14px;
+}
+
+.state-message.error {
+    background: rgba(192, 57, 43, 0.25);
+    color: #fff5f4;
+}
+
+.hidden {
+    display: none;
+}
+
+/* weather card */
+.weather-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#city-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.date {
+    margin:2px 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Unit toggle */
+.unit-toggle {
+    display: flex;
+    border: 1px solid #d8dee5;
+}
+
+.unit-btn {
+    border: none;
+    background: transparent;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.unit-btn.active {
+    background: var(--text-dark);
+    color: #ffffff;
+}
+
+/* main temperature display */
+.card-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0 4px;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+}
+
+.temperature {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.condition {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    text-transform: capitalize;
+}
+
+/* detail row */
+.card-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    border-top: 1px solid #e5e9ee;
+    padding-top: 16px;
+}
+
+.detail-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dettail-value {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* responsive */
+@media (max-width: 420px) {
+    .temperature {
+        font-size: 46px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+}
