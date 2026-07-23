@@ -1,0 +1,44 @@
+body {
+    box-sizing: content-box;
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+main {
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    background-color: pink;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+li {
+    list-style: none;
+    padding: 5px;
+}
+
+.completeBtn{
+    margin: 10px;
+    background-color: blue;
+    border: none;
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.deleteBtn {
+    background-color: crimson;
+    border: none;
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    width: 60px;
+}
+
+.done {
+    text-decoration: line-through crimson;
+    text-decoration-thickness: 3px;
+}
+

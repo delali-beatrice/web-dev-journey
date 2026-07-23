@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>TaskFlow | Simple To-Do App</title>
+</head>
+<body>
+    <main id="main">
+        <header id="header">
+            <h1>
+                TaskFlow
+            </h1>
+            <p>
+                Stay organized. Add complete, and manage your
+                daily tasks with ease.
+            </p>
+        </header>
+
+        <form action="" id="task-input-form">
+            <input 
+                type="text"
+                id="task-input"
+                placeholder="Enter a task..."
+                autocomplete="off"
+            >
+
+            <button type="button" id="add-task-btn">
+                Add Task
+            </button>
+
+        </form>
+
+        <div id="tasks-container">
+            <ul id="task-list"></ul>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
