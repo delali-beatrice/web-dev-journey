@@ -1,3 +1,6 @@
+import {completeButton} from "./completeBtn.js";
+import {deleteButton} from "./deleteBtn.js";
+
 const input = document.getElementById("task-input");
 const addBtn = document.getElementById("add-task-btn");
 const list = document.getElementById("task-list");
@@ -14,28 +17,10 @@ addBtn.addEventListener("click", () => {
         li.textContent = text;
         
         //  completed button
-        const completeBtn = document.createElement("button");
-        completeBtn.classList.add("completeBtn");
-        completeBtn.textContent = "Mark as Complete";
-        completeBtn.addEventListener("click", () => {
-            
-            li.classList.toggle("done");
-
-            if (li.classList.contains("done")) {
-                completeBtn.textContent = "Completed";
-            } else {
-                completeBtn.textContent = "Mark as Complete";
-            }
-        });
+        const completeBtn = completeButton(li);
 
         // delete button
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.classList.add("deleteBtn")
-        deleteBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // don't trigger the li click
-            li.remove();
-        });
+        const deleteBtn = deleteButton(li);
 
         li.appendChild(completeBtn);
 
