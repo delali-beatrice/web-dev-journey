@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Weather App</h1>
+
+    <label for="city-input">
+        Enter City Name:
+
+        <input type="text" id="city-input" placeholder="e.g. London">
+    </label>
+    <button id="search">Search</button>
+
+    <div class="weather-card">
+        <h2 id="city"></h2>
+        <p id="temperature"></p>
+        <p id="description"></p>
+        <img src="" alt="Weather-icon" id="weather-icon">
+    </div>
+
+    <script src="weatherAPI.js"></script>
+</body>
+</html>
