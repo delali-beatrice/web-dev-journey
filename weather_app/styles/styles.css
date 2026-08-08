@@ -185,6 +185,31 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* favorites */
+.card-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.favorite {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.favorite:hover {
+  transform: scale(1.1);
+}
+
+.favorite.favorited {
+  color: var(--accent);
+}
+
 /* ===== Popular destinations ===== */
 .popular-block {
   margin-top: 32px;
