@@ -1,105 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/daa0c8da58.js" crossorigin="anonymous"></script>
+  <title>Skyline — Weather App</title>
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <main class="app">
 
-        <header class="app-header">
-            <h1 class="logo">Skyline</h1>
-            <p class="tagline">Know the weather before you step out</p>
-        </header>
+  <main class="app">
 
-        <form action="" id="search-form" class="search-bar">
+    <header class="app-header">
+      <img src="Images/weather-illustration.png" alt="Skyline logo" class="logo-icon">
+      <h1 class="logo">Skyline</h1>
+      <p class="tagline">Know the weather before you step out</p>
+    </header>
 
-            <input 
-                type="text" 
-                id="city-input" 
-                placeholder="Enter a city, e.g. Accra"
-                autocomplete="off"
-                required
-            >
+    <section class="prompt-block">
+      <p class="prompt-title">
+        <i class="fa-regular fa-star"></i>
+         What's the weather like today?
+      </p>
+      <p class="prompt-sub">Search for a city to get real-time weather updates.</p>
+    </section>
 
-            <button type="submit" class="search-btn" aria-label="Search">
-                Search
-            </button>
-        </form>
+    <form id="search-form" class="search-bar">
+      <div class="input-wrap">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="text"
+          id="city-input"
+          placeholder="Enter a city, e.g. Accra"
+          autocomplete="off"
+          required
+        >
+      </div>
+      <button type="submit" class="search-btn" id="search-btn">
+        Search
+      </button>
+    </form>
 
-        <!--Loading State-->
-        <div id="loading" class="state-message hidden">
-            <p>Fetching the weather condition over your city...</p>
+    <div class="divider">
+      <span></span>
+      <p>or</p>
+      <span></span>
+    </div>
+
+    <button type="button" class="location-btn" id="use-location-btn">
+      <i class="fa-solid fa-location-dot"></i>
+      Use my location
+    </button>
+
+    <section class="popular-block">
+      <p class="popular-title">
+        <i class="fa-solid fa-earth-americas"></i>
+         Popular destinations
+      </p>
+      <p class="popular-sub">Check weather in popular cities</p>
+
+      <div class="city-chips">
+        <button type="button" class="city-chip" data-city="Accra">🌤️ Accra</button>
+        <button type="button" class="city-chip" data-city="London">☁️ London</button>
+        <button type="button" class="city-chip" data-city="New York">⛅ New York</button>
+        <button type="button" class="city-chip" data-city="Tokyo">🌧️ Tokyo</button>
+      </div>
+    </section>
+
+    <!-- Loading state -->
+    <div id="loading" class="state-message hidden">
+      <p>Fetching the skies over your city...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error" class="state-message error hidden">
+      <p id="error-text">City not found. Check the spelling and try again.</p>
+    </div>
+
+    <!-- Weather card (populated by JavaScript) -->
+    <section id="weather-card" class="weather-card hidden">
+
+      <div class="card-top">
+        <div>
+          <h2 id="city-name">City name</h2>
+          <p id="date-today" class="date">Day, Date</p>
         </div>
-
-        <!--Error state-->
-        <div id="error" class="state-message error hidden">
-            <p id="error-text">
-                City not found. Check the spelling and try again.
-            </p>
+        <div class="unit-toggle">
+          <button type="button" id="unit-c" class="unit-btn active">°C</button>
+          <button type="button" id="unit-f" class="unit-btn">°F</button>
         </div>
+      </div>
 
-        <!--weather card(populated by JavaScript)-->
-        <section id="weather-card" class="weather-card hidden">
-            <div class="card-top">
-                <div>
-                    <h2 id="city-name">City name</h2>
-                    <p id="date-today" class="date">Day, Date</p>
-                </div>
-    
-                <div class="unit-toogle">
-                    <button type="button" id="unit-c" class="unit-btn active">
-                        °C
-                    </button>
-    
-                    <button type="button" id="unit-f" class="unit-btn">
-                        °F
-                    </button>
-                </div>
-            </div>
-    
-            <div class="card-main">
-                <img src="" alt="" id="weather-icon" class="weather-icon">
-                <span id="temperature" class="temperature">--°</span>
-            </div>
-    
-            <p id="condition" class="condition">--</p>
-    
-            <div class="card-details">
-                <div class="detail">
-                    <span class="detail-label">
-                        Humidity
-                    </span>
-                    <span id="humidity" class="detail-value">
-                        --%
-                    </span>
-                </div>
-    
-                <div class="detail">
-                    <span class="detail-label">
-                        Wind
-                    </span>
-                    <span id="wind" class="detail-value">
-                        -- km/h
-                    </span>
-                </div>
-    
-                <div class="detail">
-                    <span class="detail-label">
-                        Feels like
-                    </span>
-                    <span id="feels-like" class="detail-value">
-                        --°
-                    </span>
-                </div>
-            </div>
+      <div class="card-main">
+        <img id="weather-icon" src="" alt="" class="weather-icon">
+        <span id="temperature" class="temperature">--°</span>
+      </div>
 
-        </section>
+      <p id="condition" class="condition">--</p>
 
-    </main>
+      <div class="card-details">
+        <div class="detail">
+          <span class="detail-label">Humidity</span>
+          <span id="humidity" class="detail-value">--%</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Wind</span>
+          <span id="wind" class="detail-value">-- km/h</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Feels like</span>
+          <span id="feels-like" class="detail-value">--°</span>
+        </div>
+      </div>
 
-    <script type="module" src="scripts/script.js"></script>
+    </section>
+
+    <section class="features-block">
+      <div class="feature">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Real-time Updates</h3>
+        <p>Get the latest weather instantly</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-droplet"></i>
+        <h3>Accurate Forecast</h3>
+        <p>Reliable data you can trust</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-wind"></i>
+        <h3>Detailed Info</h3>
+        <p>Temperature, humidity, wind &amp; more</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-heart"></i>
+        <h3>Save Favorites</h3>
+        <p>Save your favorite cities for quick access</p>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>🛡️ Stay informed. Stay prepared. Stay ahead.</p>
+    </footer>
+
+  </main>
+
+  <script type="module" src="scripts/script.js"></script>
 </body>
 </html>
